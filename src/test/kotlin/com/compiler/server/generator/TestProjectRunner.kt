@@ -215,7 +215,7 @@ class TestProjectRunner {
     pathToAppScript: String?
   ): String {
     val processBuilder = ProcessBuilder()
-    processBuilder.command(pathToBinNode, "--experimental-wasm-gc", pathToAppScript)
+    processBuilder.command(pathToBinNode, pathToAppScript)
     val process = processBuilder.start()
     val inputStream = process.inputStream
     process.waitFor()

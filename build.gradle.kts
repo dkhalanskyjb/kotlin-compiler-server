@@ -22,10 +22,6 @@ plugins {
 
 apply<NodeJsRootPlugin>()
 
-// for new Wasm opcodes
-the<NodeJsRootExtension>().nodeVersion = "21.0.0-v8-canary202309167e82ab1fa2"
-the<NodeJsRootExtension>().nodeDownloadBaseUrl = "https://nodejs.org/download/v8-canary"
-
 allprojects {
     repositories {
         mavenCentral()
