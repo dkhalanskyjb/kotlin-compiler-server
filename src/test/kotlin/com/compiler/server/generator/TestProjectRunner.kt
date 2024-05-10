@@ -10,7 +10,10 @@ import org.junit.jupiter.api.Assertions
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 import java.io.IOException
-import kotlin.io.path.*
+import kotlin.io.path.absolutePathString
+import kotlin.io.path.createTempDirectory
+import kotlin.io.path.writeBytes
+import kotlin.io.path.writeText
 import kotlin.test.assertTrue
 
 
@@ -186,10 +189,6 @@ class TestProjectRunner {
     jsUninstantiated.writeText(result.jsCode!!)
     val wasmMain = tmpDir.resolve("moduleId.wasm")
     wasmMain.writeBytes(result.wasm)
-
-    // It is necessary because wasm DCE leaves skiko references
-//    Path(this::class.java.classLoader.getResource("wasm-resources/skiko.mjs")!!.path)
-//      .copyTo(tmpDir.resolve("skiko.mjs"))
 
     val wat = result.wat
     val maxWatLengthInMessage = 97
